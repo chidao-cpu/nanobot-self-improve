@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>🐈 nanobot-self-improve</h1>
-  <p><strong>具有记忆自进化能力的轻量级 AI Agent 框架</strong></p>
+  <h1>� 知微 (ZhiWei)</h1>
+  <p><strong>见微知著 — 具有记忆自进化能力的智能体框架</strong></p>
   <p>
     <a href="#-核心特性">核心特性</a> •
     <a href="#-快速开始">快速开始</a> •
@@ -17,14 +17,16 @@
 
 ---
 
-## 🎯 项目定位
+## 🎯 关于知微
 
-**nanobot-self-improve** 是基于 [nanobot](https://github.com/HKUDS/nanobot) 的增强版本，专注于两个核心创新：
+**知微**是一个具有**持续学习能力**的智能体框架。它的名字取自"见微知著"——从细微处洞察规律，持续进化。
 
-1. **两阶段记忆整合机制** — 实时压缩 + 反思性巩固，让 Agent 真正"记住"并"理解"对话
+知微的核心创新在于两个相互协同的系统：
+
+1. **两阶段记忆整合** — 实时压缩 + 反思性巩固，让智能体真正"记住"并"理解"对话
 2. **技能自进化系统** — 从对话中学习、创建、追踪、归档技能，形成闭环的自我提升能力
 
-这两个特性使 nanobot 从一个"无状态的工具调用器"进化为一个**具有持续学习能力的智能体**。
+这两个特性使知微从一个"无状态的工具调用器"进化为一个**能够持续成长的智能伙伴**。
 
 ---
 
@@ -32,7 +34,7 @@
 
 ### 🧠 两阶段记忆整合（Dream Memory System）
 
-传统的 AI Agent 要么完全无状态，要么简单地把所有历史塞进上下文。nanobot 实现了一个**两阶段记忆整合系统**，让 Agent 能够像人类一样"消化"和"整理"对话经验。
+传统的 AI Agent 要么完全无状态，要么简单地把所有历史塞进上下文。知微实现了一个**两阶段记忆整合系统**，让智能体能够像人类一样"消化"和"整理"对话经验。
 
 #### 第一阶段：实时压缩（Consolidator）
 
@@ -86,20 +88,56 @@ MEMORY.md 使用 `\n§\n` 分隔符组织原子事实：
 
 ### 🔄 技能自进化系统（Skill Self-Evolution）
 
-nanobot 实现了一个**完整的技能生命周期系统**，让 Agent 能够从对话中学习、创建、追踪、归档技能，形成闭环的自我提升能力。
+知微最独特的能力是**从对话中自主学习并持续进化**。它不只是记住事实，而是将经验转化为可复用的技能，形成真正的自我提升闭环。
 
-#### 学习入口：`/learn` 命令
+#### 技能是如何诞生的？
 
-用户描述要学习的内容，Agent 自动：
-1. 使用工具（read_file、search、web_fetch）收集权威资料
-2. 提炼出持久、可复用的流程
-3. 调用 `skill_manage` 工具创建 SKILL.md
+想象这样一个场景：你在和知微讨论如何优化 Python 异步代码，经过几轮对话，你们总结出了一套有效的优化流程。知微不会让这次对话的价值就此消失——它会主动提议：
+
+> "我们刚才总结的优化流程很有价值，要不要我把它保存为一个技能，下次遇到类似问题时可以直接使用？"
+
+这就是**技能自进化**的起点。知微通过三个机制实现持续学习：
+
+**1. 主动学习（`/learn` 命令）**
+
+你可以直接告诉知微要学习什么：
 
 ```bash
-/learn 如何优化 Python 异步代码的性能
+/learn 如何设计高可用的微服务架构
 ```
 
-#### 技能管理工具
+知微会：
+- 使用工具（read_file、search、web_fetch）收集权威资料
+- 提炼出持久、可复用的流程和方法
+- 创建结构化的技能文档 `workspace/skills/microservice-design/SKILL.md`
+- 记录技能的来源、创建时间和使用场景
+
+**2. 对话后审查（Background Review）**
+
+每次对话结束后，知微会自动启动一个轻量级的"反思"过程：
+
+```
+对话结束
+    ↓
+审查对话内容
+    ├─→ 用户是否透露了偏好？（保存到 USER.md）
+    ├─→ 是否表达了期望？（保存到 SOUL.md）
+    └─→ 是否产生了可复用的流程？（创建技能）
+```
+
+**审查信号**：
+- 用户纠正了你的风格、语气、格式或详细程度
+- 用户纠正了你的工作流程或方法
+- 出现了非平凡的技术或解决方案
+- 加载的技能结果是错误或过时的
+
+**优先级**：
+1. 更新当前加载的技能（如果是 curator 管理的）
+2. 更新现有的伞形技能
+3. 添加支持文件（references/、templates/、scripts/）
+4. 创建新技能（最后手段）
+
+**3. 技能管理工具**
 
 `skill_manage` 工具支持三个操作：
 - **create**：创建新技能到 `workspace/skills/<name>/SKILL.md`
@@ -111,7 +149,11 @@ nanobot 实现了一个**完整的技能生命周期系统**，让 Agent 能够�
 - 名称验证：仅允许字母、数字、连字符、下划线
 - 背景审查守卫：限制后台审查期间的自主写入
 
-#### 使用追踪系统
+#### 技能的生命周期
+
+知微不只是创建技能，还会**追踪和管理**技能的整个生命周期：
+
+**使用追踪**
 
 每个技能的使用情况记录在 `workspace/skills/.usage/<name>.json`：
 
@@ -128,12 +170,21 @@ class SkillUsageRecord:
     pinned: bool = False            # 是否固定
 ```
 
-**状态机**：
-- **ACTIVE → STALE**：超过 `DEFAULT_STALE_AFTER_DAYS`（可配置）未使用
-- **STALE → ARCHIVED**：超过 `DEFAULT_ARCHIVE_AFTER_DAYS` 未使用
-- **STALE → ACTIVE**：再次使用时自动复活
+**状态机**
 
-#### Curator：自动生命周期管理
+技能会根据使用情况自动转换状态：
+
+```
+ACTIVE（活跃）
+    ↓ 超过 7 天未使用
+STALE（陈旧）
+    ↓ 超过 30 天未使用
+ARCHIVED（归档）
+    ↓ 再次被引用
+ACTIVE（复活）
+```
+
+**Curator：自动生命周期管理**
 
 Curator 是一个**空闲触发**的后台进程（无需 cron 守护进程）：
 
@@ -148,36 +199,6 @@ Curator 是一个**空闲触发**的后台进程（无需 cron 守护进程）�
 - 支持 dry-run 模式预览
 
 **伞形策略**：倾向于将相关技能合并为"类级别"的伞形技能，而不是维护扁平的窄技能列表。
-
-#### 背景审查：对话后学习
-
-每次对话结束后，一个轻量级的 Agent 分支会审查对话：
-
-**记忆审查提示**：
-```
-审查上述对话，如果合适则保存到记忆。
-关注：
-1. 用户是否透露了关于自己的信息？
-2. 用户是否表达了对你行为的期望？
-```
-
-**技能审查提示**：
-```
-审查上述对话并更新技能库。要积极——
-大多数会话至少产生一次技能更新，即使很小。
-
-寻找的信号：
-  • 用户纠正了你的风格、语气、格式或详细程度
-  • 用户纠正了你的工作流程或方法
-  • 出现了非平凡的技术或解决方案
-  • 加载的技能结果是错误或过时的
-```
-
-**优先级**：
-1. 更新当前加载的技能（如果是 curator 管理的）
-2. 更新现有的伞形技能
-3. 添加支持文件（references/、templates/、scripts/）
-4. 创建新技能（最后手段）
 
 #### 技能溯源追踪
 
@@ -312,7 +333,7 @@ nanobot --version
 
 ## 🚀 快速开始
 
-**在浏览器中打开 nanobot**
+**在浏览器中打开知微**
 
 ```bash
 nanobot webui
@@ -328,7 +349,7 @@ nanobot webui
 
 任何正常回复都意味着提供商、模型、工作区和浏览器网关正在协同工作。
 
-**关闭终端后保持 nanobot 运行**
+**关闭终端后保持知微运行**
 
 ```bash
 nanobot webui --background
@@ -371,13 +392,13 @@ nanobot agent -m "Hello!"
 
 需要手动 JSON、局域网上的其他设备或提供商/模型匹配的帮助？继续[安装和快速开始](./docs/quick-start.md)、[WebUI](./docs/webui.md) 或[故障排除](./docs/troubleshooting.md)。
 
-如果 nanobot 对你有帮助，在 GitHub 上点赞是支持项目的最简单方式。
+如果知微对你有帮助，在 GitHub 上点赞是支持项目的最简单方式。
 
 - 想要可粘贴的提供商设置？请参阅[提供商手册](./docs/provider-cookbook.md)
 - 想要理解提供商/模型匹配？请参阅[提供商和模型](./docs/providers.md)
 - 想要网络搜索、MCP、安全设置或更多配置选项？请参阅[配置](./docs/configuration.md)
 - 想要本地运行？请参阅 [Ollama](./docs/providers.md#ollama)、[vLLM 或其他本地 OpenAI 兼容服务器](./docs/providers.md#vllm-or-other-local-openai-compatible-server) 和完整的[提供商参考](./docs/configuration.md#providers)。
-- 想要在 Telegram、Discord、微信或飞书等聊天应用中运行 nanobot？请参阅[聊天应用](./docs/chat-apps.md)
+- 想要在 Telegram、Discord、微信或飞书等聊天应用中运行知微？请参阅[聊天应用](./docs/chat-apps.md)
 - 想要 Docker 或 Linux 服务部署？请参阅[部署](./docs/deployment.md)
 
 <a id="deploy-to-render"></a>
@@ -386,7 +407,7 @@ nanobot agent -m "Hello!"
 
 **Render — 一键部署**
 
-从仓库的就绪蓝图部署 nanobot 的网关和捆绑的 WebUI：
+从仓库的就绪蓝图部署知微的网关和捆绑的 WebUI：
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/chidao-cpu/nanobot-self-improve)
 
@@ -423,7 +444,7 @@ WebUI **在发布的 wheel 内部发布**，无需单独的前端构建。它是
   <img src="images/nanobot_arch.png" alt="nanobot architecture" width="800">
 </p>
 
-🐈 nanobot 通过将一切围绕一个小型代理循环保持轻量：消息从聊天应用进入，LLM 决定何时需要工具，记忆或技能仅作为上下文拉入，而不是成为沉重的编排层。这保持了核心路径可读且易于扩展，同时仍然允许你添加通道、工具、记忆和部署选项，而不会将系统变成单体。
+� 知微通过将一切围绕一个小型代理循环保持轻量：消息从聊天应用进入，LLM 决定何时需要工具，记忆或技能仅作为上下文拉入，而不是成为沉重的编排层。这保持了核心路径可读且易于扩展，同时仍然允许你添加通道、工具、记忆和部署选项，而不会将系统变成单体。
 
 ### 核心数据流
 
@@ -470,38 +491,13 @@ WebUI **在发布的 wheel 内部发布**，无需单独的前端构建。它是
 
 ---
 
-## 🔄 版本发布
-
-**最新发布：[v0.3.0 - The Agency Release](https://github.com/HKUDS/nanobot/releases/tag/v0.3.0)**
-
-Agency Release 将 nanobot 从持久工作台转变为能够协调助手、按会话切换模型并将授权工作 carried through to completion 的代理运行时。
-
-- 在不离开当前任务的情况下咨询内联子代理
-- 直接从编辑器按会话切换模型预设
-- 从引导式 WebUI 设置开始，具有更清晰的执行控制
-- 在更可靠的提供商、通道和工具运行时上实时应用配置更改
-
-[阅读 v0.3.0 发布说明](https://github.com/HKUDS/nanobot/releases/tag/v0.3.0)
-
-### 最近更新
-
-- **2026-07-24** 引导式首次运行设置、内联子代理和从编辑器切换模型。
-- **2026-07-23** Grok OAuth 与托管 X Search、实时图像设置和更清晰的后备模型。
-- **2026-07-22** 并行搜索、实时配置重新加载、更丰富的应用发现和更流畅的移动 WebUI。
-- **2026-07-21** Codex 快速模式、可见技能引用、更安全的配置保存和更稳定的任务清理。
-- **2026-07-20** 更清晰的代码块和复制操作、自包含通道和更稳定的 QQ 重连。
-
-有关旧更新，请参阅[发布存档](./docs/release-archive.md)或 [GitHub 发布](https://github.com/HKUDS/nanobot/releases)。
-
----
-
 ## 🤝 贡献
 
-使用 nanobot 完成真实任务，报告损坏的内容，然后选择集中的改进。
+欢迎贡献代码、报告问题或提出改进建议。
 
-- 阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)了解开发工作流程。
-- 浏览[开放问题](https://github.com/chidao-cpu/nanobot-self-improve/issues)寻找要调查的问题。
-- 打开[拉取请求](https://github.com/chidao-cpu/nanobot-self-improve/pulls)进行集中的修复或集成。
+- 阅读 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解开发工作流程
+- 浏览[开放问题](https://github.com/chidao-cpu/nanobot-self-improve/issues)寻找可以参与的任务
+- 提交[拉取请求](https://github.com/chidao-cpu/nanobot-self-improve/pulls)进行修复或功能集成
 
 ---
 
@@ -511,17 +507,6 @@ Agency Release 将 nanobot 从持久工作台转变为能够协调助手、按�
 
 ---
 
-## 🙏 致谢
-
-nanobot-self-improve 基于 [nanobot](https://github.com/HKUDS/nanobot) 项目，由 [Xubin Ren](https://github.com/re-bin) 创建。本仓库专注于记忆机制和技能自进化系统的增强。
-
-感谢所有贡献者的辛勤工作！
-
-<a href="https://github.com/HKUDS/nanobot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=HKUDS/nanobot&max=100&columns=12&updated=20260210" alt="Contributors" />
-</a>
-
 <p align="center">
-  <em>感谢访问 ✨ nanobot-self-improve！</em><br><br>
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=chidao-cpu.nanobot-self-improve&style=for-the-badge&color=00d4ff" alt="Views">
+  <em>见微知著，持续进化</em>
 </p>

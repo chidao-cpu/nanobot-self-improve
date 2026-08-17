@@ -2,7 +2,7 @@ This file provides guidance to AI coding agents working with this repository.
 
 ## Project Overview
 
-nanobot-self-improve is an enhanced version of the nanobot AI agent framework, focusing on two core innovations:
+知微 (ZhiWei) is an enhanced version of the nanobot AI agent framework, focusing on two core innovations:
 
 1. **Two-phase memory consolidation** - Real-time compression + reflective Dream consolidation
 2. **Skill self-evolution system** - Learning, tracking, and lifecycle management of agent skills
