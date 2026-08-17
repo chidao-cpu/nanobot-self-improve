@@ -2,7 +2,12 @@ This file provides guidance to AI coding agents working with this repository.
 
 ## Project Overview
 
-nanobot is a lightweight, open-source AI agent framework written in Python with a React/TypeScript WebUI. It centers around a small agent loop that receives messages from chat channels, invokes an LLM provider, executes tools, and manages session memory.
+nanobot-self-improve is an enhanced version of the nanobot AI agent framework, focusing on two core innovations:
+
+1. **Two-phase memory consolidation** - Real-time compression + reflective Dream consolidation
+2. **Skill self-evolution system** - Learning, tracking, and lifecycle management of agent skills
+
+The framework is written in Python with a React/TypeScript WebUI. It centers around a small agent loop that receives messages from chat channels, invokes an LLM provider, executes tools, and manages session memory with advanced consolidation capabilities.
 
 ## Development Commands
 
