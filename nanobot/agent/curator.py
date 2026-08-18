@@ -118,8 +118,8 @@ def mark_curator_run(workspace: Path) -> None:
 # LLM umbrella consolidation (Stage 5)
 # ---------------------------------------------------------------------------
 
-# Default: OFF — deterministic prune still runs; LLM pass is opt-in.
-DEFAULT_CONSOLIDATE = False
+# Default: ON — LLM umbrella consolidation runs alongside deterministic prune.
+DEFAULT_CONSOLIDATE = True
 
 CURATOR_REVIEW_PROMPT = """\
 You are running as the background skill CURATOR. This is an UMBRELLA-BUILDING

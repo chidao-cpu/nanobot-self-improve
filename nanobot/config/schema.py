@@ -83,7 +83,7 @@ class CuratorSchemaConfig(Base):
     """Curator skill lifecycle configuration."""
 
     enabled: bool = True  # Enable periodic curator runs
-    consolidate: bool = False  # Enable LLM-driven umbrella skill consolidation
+    consolidate: bool = True  # Enable LLM-driven umbrella skill consolidation
     interval_days: int = Field(default=7, ge=1)  # Fallback cron interval in days
     min_idle_minutes: int = Field(default=30, ge=1)  # Minimum idle time before curator triggers
     promote_use_count: int = Field(default=5, ge=1)  # Promote to dynamic_always after N uses
