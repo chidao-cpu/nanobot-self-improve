@@ -146,6 +146,7 @@ PROVIDERS: tuple[ProviderSpec, ...] = (
         display_name="Custom",
         backend="openai_compat",
         is_direct=True,
+        strip_model_prefix=True,
     ),
 
     # === Azure OpenAI (direct API calls with API version 2024-10-21) =====

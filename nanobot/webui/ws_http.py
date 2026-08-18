@@ -1113,6 +1113,9 @@ class GatewayHTTPHandler:
             self._log.warning("static: failed to read {}: {}", candidate, e)
             return _http_error(500, "Internal Server Error")
         ctype, _ = mimetypes.guess_type(candidate.name)
+        # Windows may return text/plain for .js files; force correct MIME type
+        if ctype == "text/plain" and candidate.suffix == ".js":
+            ctype = "application/javascript"
         if ctype is None:
             ctype = "application/octet-stream"
         if ctype.startswith("text/") or ctype in {"application/javascript", "application/json"}:
